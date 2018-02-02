@@ -1,0 +1,44 @@
+<ion-content class="main">
+  <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+
+  <div id="main-area">
+    <p id="pingo-number">{{pingoNumber}}</p>
+    <p id="p-number-mgl">
+      <font face="Mongolian ZS">
+        <span id="pingo-number-mgl">{{pingoNumberMgl}}</span>
+      </font>
+    </p>
+    <div id="buttons">
+      <!-- <button id="start-button" class="btn btn-lg btn-default" ion-button (click)="startClicked();"> -->
+      <div id="start-button" class="my-button" (click)="startClicked();">
+        <ion-icon name="game-controller-b"></ion-icon> {{ startButton }} </div>
+      <!-- </button> -->
+      <!-- <button id="reset-button" class="btn btn-lg btn-default" ion-button (click)="resetClicked();">{{resetButton}}</button> -->
+      <div id="reset-button" class="my-button" (click)="resetClicked();">
+        <ion-icon name="trash" isActive="false"></ion-icon> {{ resetButton }} </div>
+    </div>
+  </div>
+  <div id="history-area">
+    <div class="history-title">
+      <h3>ᠭᠠᠷᠴᠤ ᠦᠩᠭᠡᠷᠡᠭᠰᠡᠨ ᠲᠤᠭ᠎ᠠ</h3>
+    </div>
+    <div id="histories" class="row histories">
+      <div class="col-md-1" *ngFor="let historiesDiv of historiesDivs">
+        <p class="history-number">{{ historiesDiv }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- <audio id="drum" preload="auto">
+    <source src="asset/nc79078.mp3" type="audio/mp3">
+  </audio> -->
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <!-- <script src="asset/jquery-1.11.3.min.js "></script> -->
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <!-- <script src="asset/bootstrap-3.3.5-dist/js/bootstrap.min.js "></script> -->
+  <!-- <script src="asset/partybingo.js "></script> -->
+
+</ion-content>
