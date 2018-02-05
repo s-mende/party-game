@@ -158,141 +158,111 @@ var BingoPage = (function () {
         this.storage = sessionStorage;
         this.listKey = 'partybingo.numberlist';
         this.removedKey = 'partybingo.removedlist';
-        this.startClicked = function (e) {
-            if (this.isStarted) {
-                this.stop(null);
-            }
-            else {
-                this.start();
-                // let n: number = 0;
-                // while (n < 60) {
-                //   this.rourletto();
-                //   n++;
-                // }
-                // setTimeout(
-                this.rourletto();
-                // , 25);
-            }
-        };
-        this.stop = function (time) {
-            this.isStarted = false;
-            this.startButton = ' ᠡᠬᠢᠯᠡᠬᠦ ';
-            var n = this.removeNumberRamdom();
-            this.pingoNumber = this.toBingoString(n);
-            this.pingoNumberMgl = this.numberListMglJson.number[n - 1];
-            this.addHistory(n);
-            // this.soundEffectProvider.soundRuletStop();
-            this.soundEffectProvider.soundRulet(true);
-        };
-        this.start = function () {
-            this.isStarted = true;
-            this.startButton = 'ᠵᠤᠭᠰᠤᠬᠤ';
-            // drumAudio.currentTime = 0;
-            // drumAudio.play();
-            this.soundEffectProvider.soundRulet(false);
-            // this.rourletto();
-        };
-        this.removeNumberRamdom = function () {
-            var numberList = this.getNumberList();
-            if (numberList.length === 0) {
-                return -1;
-            }
-            var i = Math.floor(Math.random() * numberList.length);
-            var removed = numberList[i];
-            numberList.splice(i, 1);
-            this.setNumberList(numberList);
-            var removedList = this.getRemovedList();
-            removedList.push(removed);
-            this.setRemovedList(removedList);
-            return removed;
-        };
-        this.toBingoString = function (n) {
-            if (n > 9) {
-                return n.toString(10);
-            }
-            else if (n < 0) {
-                return '00';
-            }
-            else {
-                return '0' + n.toString(10);
-            }
-        };
-        this.getNumberRamdom = function () {
-            var numberList = this.getNumberList();
-            var i = Math.floor(Math.random() * numberList.length);
-            return numberList[i];
-        };
-        this.getNumberList = function () {
-            return JSON.parse(this.storage.getItem(this.listKey));
-        };
-        this.setRemovedList = function (a) {
-            console.log("a=====" + JSON.stringify(a));
-            this.storage.setItem(this.removedKey, JSON.stringify(a));
-        };
-        this.getRemovedList = function () {
-            return JSON.parse(this.storage.getItem(this.removedKey));
-        };
-        this.resetLists = function () {
-            this.setNumberList(this.numberListAll);
-            this.setRemovedList([]);
-        };
-        this.setNumberList = function (a) {
-            console.log("a=====" + JSON.stringify(a));
-            this.storage.setItem(this.listKey, JSON.stringify(a));
-        };
-        this.addHistory = function (n) {
-            console.log('historiesDivs===' + this.historiesDivs.length);
-            this.historiesDivs[this.historiesDivs.length] = this.toBingoString(n);
-        };
-        this.resetClicked = function () {
-            if (confirm('bugudiig ballanuu?')) {
-                this.resetLists();
-                this.pingoNumber = '00';
-                this.pingoNumberMgl = 'ᠲᠢᠭ᠌';
-                this.historiesDivs = [];
-                // drumAudio.pause();
-                // this.startButton.focus();
-            }
-        };
-        // init number list and storage
+        // bingo数字を初期か及びストレージ処理
         this.numberListAll = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75];
         this.numberListMglAll = '{"number":["ᠨᠢᠭᠡ","ᠬᠤᠶᠠᠷ","ᠭᠤᠷᠪᠡ","ᠲᠦᠷᠪᠡ","ᠲᠠᠪᠤ","ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠲᠤᠯᠤᠭ᠎ᠠ","ᠨᠠᠢ᠋ᠮᠠ","ᠶᠢᠰᠤ","ᠠᠷᠪᠠ","ᠠᠷᠪᠠᠨ ᠨᠢᠭᠡ","ᠠᠷᠪᠠᠨ ᠬᠤᠶᠠᠷ","ᠠᠷᠪᠠᠨ ᠭᠤᠷᠪᠡ","ᠠᠷᠪᠠᠨ ᠲᠦᠷᠪᠡ","ᠠᠷᠪᠠᠨ ᠲᠠᠪᠤ","ᠠᠷᠪᠠᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠠᠷᠪᠠᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠠᠷᠪᠠᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠠᠷᠪᠠᠨ ᠶᠢᠰᠤ","ᠬᠤᠷᠢ","ᠬᠤᠷᠢᠨ ᠨᠢᠭᠡ","ᠬᠤᠷᠢᠨ ᠬᠤᠶᠠᠷ","ᠬᠤᠷᠢᠨ ᠭᠤᠷᠪᠡ","ᠬᠤᠷᠢᠨ ᠲᠦᠷᠪᠡ","ᠬᠤᠷᠢᠨ ᠲᠠᠪᠤ","ᠬᠤᠷᠢᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠬᠤᠷᠢᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠬᠤᠷᠢᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠬᠤᠷᠢ ᠶᠢᠰᠤ","ᠭᠤᠴᠢ","ᠭᠤᠴᠢᠨ ᠨᠢᠭᠡ","ᠭᠤᠴᠢᠨ ᠬᠤᠶᠠᠷ","ᠭᠤᠴᠢᠨ ᠭᠤᠷᠪᠡ","ᠭᠤᠴᠢᠨ ᠲᠦᠷᠪᠡ","ᠭᠤᠴᠢᠨ ᠲᠠᠪᠤ","ᠭᠤᠴᠢᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠭᠤᠴᠢᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠭᠤᠴᠢᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠭᠤᠴᠢ ᠶᠢᠰᠤ","ᠲᠦᠴᠢ","ᠲᠦᠴᠢᠨ ᠨᠢᠭᠡ","ᠲᠦᠴᠢᠨ ᠬᠤᠶᠠᠷ","ᠲᠦᠴᠢᠨ ᠭᠤᠷᠪᠡ","ᠲᠦᠴᠢᠨ ᠲᠦᠷᠪᠡ","ᠲᠦᠴᠢᠨ ᠲᠠᠪᠤ","ᠲᠦᠴᠢᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠲᠦᠴᠢᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠲᠦᠴᠢᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠲᠦᠴᠢ ᠶᠢᠰᠤ","ᠲᠠᠪᠢ","ᠲᠠᠪᠢᠨ ᠨᠢᠭᠡ","ᠲᠠᠪᠢᠨ ᠬᠤᠶᠠᠷ","ᠲᠠᠪᠢᠨ ᠭᠤᠷᠪᠡ","ᠲᠠᠪᠢᠨ ᠲᠦᠷᠪᠡ","ᠲᠠᠪᠢᠨ ᠲᠠᠪᠤ","ᠲᠠᠪᠢᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠲᠠᠪᠢᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠲᠠᠪᠢᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠲᠠᠪᠢ ᠶᠢᠰᠤ","ᠵᠢᠷᠠ","ᠵᠢᠷᠠᠨ ᠨᠢᠭᠡ","ᠵᠢᠷᠠᠨ ᠬᠤᠶᠠᠷ","ᠵᠢᠷᠠᠨ ᠭᠤᠷᠪᠡ","ᠵᠢᠷᠠᠨ ᠲᠦᠷᠪᠡ","ᠵᠢᠷᠠᠨ ᠲᠠᠪᠤ","ᠵᠢᠷᠠᠨ ᠵᠢᠷᠭᠤᠭ᠎ᠠ","ᠵᠢᠷᠠᠨ ᠲᠤᠯᠤᠭ᠎ᠠ","ᠵᠢᠷᠠᠨ ᠨᠠᠢ᠋ᠮᠠ","ᠵᠢᠷᠠ ᠶᠢᠰᠤ","ᠲᠠᠯᠠ","ᠲᠠᠯᠠᠨ ᠨᠢᠭᠡ","ᠲᠠᠯᠠᠨ ᠬᠤᠶᠠᠷ","ᠲᠠᠯᠠᠨ ᠭᠤᠷᠪᠡ","ᠲᠠᠯᠠᠨ ᠲᠦᠷᠪᠡ","ᠲᠠᠯᠠᠨ ᠲᠠᠪᠤ"]}';
         this.numberListMglJson = JSON.parse(this.numberListMglAll);
-        this.resetLists();
-        this.getScreenSize();
-        // create initial list or loadHistory
-        var loadedNumberList = this.getNumberList();
-        var loadedRemovedList = this.getRemovedList();
-        if (loadedNumberList && loadedRemovedList) {
-            for (var i = 0; i < loadedRemovedList.length; i++) {
-                this.addHistory(loadedRemovedList[i]);
+        this.numberList = JSON.parse(this.storage.getItem(this.listKey));
+        this.removedList = JSON.parse(this.storage.getItem(this.removedKey));
+        // 残りリスト作成or履歴作成
+        if (this.numberList && this.removedList) {
+            for (var i = 0; i < this.removedList.length; i++) {
+                //履歴作成
+                this.historiesDivs[this.historiesDivs.length] = this.toBingoString(this.removedList[i]);
             }
         }
         else {
             this.resetLists();
         }
     }
-    BingoPage.prototype.rourletto = function () {
-        if (this.isStarted) {
-            this.pingoNumber = this.toBingoString(this.getNumberRamdom());
-            console.log(this.pingoNumber);
-            setTimeout(this.rourletto(), 60);
+    // 2桁に統一する
+    BingoPage.prototype.toBingoString = function (n) {
+        if (n > 9) {
+            return n.toString(10);
+        }
+        else if (n < 0) {
+            return '00';
+        }
+        else {
+            return '0' + n.toString(10);
         }
     };
-    BingoPage.prototype.getScreenSize = function () {
-        this.screenWidth = window.parent.screen.width;
-        this.screenHeight = window.parent.screen.height;
+    // ボタンがクリックされた時
+    BingoPage.prototype.startClicked = function (e) {
+        if (this.isStarted) {
+            this.stop();
+        }
+        else {
+            this.start();
+        }
+    };
+    ;
+    //ストップ処理
+    BingoPage.prototype.stop = function () {
+        this.isStarted = false;
+        this.startButton = ' ᠡᠬᠢᠯᠡᠬᠦ ';
+        var n = this.removeNumberRamdom();
+        this.pingoNumber = this.toBingoString(n);
+        this.pingoNumberMgl = this.numberListMglJson["number"][n - 1];
+        //履歴作成
+        this.historiesDivs[this.historiesDivs.length] = this.toBingoString(n);
+        //サウンド停止
+        this.soundEffectProvider.soundRulet(true);
+    };
+    BingoPage.prototype.removeNumberRamdom = function () {
+        if (this.numberList.length === 0) {
+            return -1;
+        }
+        clearInterval(this.intervalId);
+        var i = Math.floor(Math.random() * this.numberList.length);
+        var removed = this.numberList[i];
+        this.numberList.splice(i, 1);
+        this.storage.setItem(this.listKey, JSON.stringify(this.numberList));
+        this.removedList.push(removed);
+        this.storage.setItem(this.removedKey, JSON.stringify(this.removedList));
+        return removed;
+    };
+    //スタート処理
+    BingoPage.prototype.start = function () {
+        this.isStarted = true;
+        this.startButton = 'ᠵᠤᠭᠰᠤᠬᠤ';
+        console.log('ᠡᠬᠢᠯᠡᠪᠡ');
+        this.soundEffectProvider.soundRulet(false);
+        this.rourletto();
+    };
+    BingoPage.prototype.rourletto = function () {
+        var _this = this;
+        if (this.isStarted) {
+            this.intervalId = setInterval(function () {
+                var i = Math.floor(Math.random() * _this.numberList.length);
+                _this.pingoNumber = String(_this.toBingoString(_this.numberList[i]));
+                _this.pingoNumberMgl = String(_this.numberListMglJson["number"][i]);
+            }, 60);
+        }
+    };
+    // 履歴クリア
+    BingoPage.prototype.resetLists = function () {
+        this.storage.setItem(this.listKey, JSON.stringify(this.numberListAll));
+        this.storage.setItem(this.removedKey, JSON.stringify([]));
+    };
+    // リセットボタン
+    BingoPage.prototype.resetClicked = function () {
+        if (confirm('bugudiig ballanuu?')) {
+            this.resetLists();
+            this.pingoNumber = '00';
+            this.pingoNumberMgl = 'ᠲᠢᠭ᠌';
+            this.historiesDivs = [];
+        }
     };
     ;
     BingoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-bingo',template:/*ion-inline-start:"/Users/suchin/Documents/workspace/private_project/s-mende.party-game/src/pages/bingo/bingo.html"*/'<ion-content class="main">\n  <button ion-button menuToggle>\n    <ion-icon name="menu"></ion-icon>\n  </button>\n\n  <div id="main-area">\n    <p id="pingo-number">{{pingoNumber}}</p>\n    <p id="p-number-mgl">\n      <font face="Mongolian ZS">\n        <span id="pingo-number-mgl">{{pingoNumberMgl}}</span>\n      </font>\n    </p>\n    <div id="buttons">\n      <!-- <button id="start-button" class="btn btn-lg btn-default" ion-button (click)="startClicked();"> -->\n      <div id="start-button" class="my-button" (click)="startClicked();">\n        <ion-icon name="game-controller-b"></ion-icon> {{ startButton }} </div>\n      <!-- </button> -->\n      <!-- <button id="reset-button" class="btn btn-lg btn-default" ion-button (click)="resetClicked();">{{resetButton}}</button> -->\n      <div id="reset-button" class="my-button" (click)="resetClicked();">\n        <ion-icon name="trash" isActive="false"></ion-icon> {{ resetButton }} </div>\n    </div>\n  </div>\n  <div id="history-area">\n    <div class="history-title">\n      <h3>ᠭᠠᠷᠴᠤ ᠦᠩᠭᠡᠷᠡᠭᠰᠡᠨ ᠲᠤᠭ᠎ᠠ</h3>\n    </div>\n    <div id="histories" class="row histories">\n      <div class="col-md-1" *ngFor="let historiesDiv of historiesDivs">\n        <p class="history-number">{{ historiesDiv }}</p>\n      </div>\n    </div>\n  </div>\n\n  <!-- <audio id="drum" preload="auto">\n    <source src="asset/nc79078.mp3" type="audio/mp3">\n  </audio> -->\n\n  <!-- jQuery (necessary for Bootstrap\'s JavaScript plugins) -->\n  <!-- <script src="asset/jquery-1.11.3.min.js "></script> -->\n  <!-- Include all compiled plugins (below), or include individual files as needed -->\n  <!-- <script src="asset/bootstrap-3.3.5-dist/js/bootstrap.min.js "></script> -->\n  <!-- <script src="asset/partybingo.js "></script> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/suchin/Documents/workspace/private_project/s-mende.party-game/src/pages/bingo/bingo.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */]) === "function" && _c || Object])
     ], BingoPage);
     return BingoPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=bingo.js.map
@@ -394,9 +364,10 @@ var SoundEffectProvider = (function () {
     };
     SoundEffectProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]) === "function" && _a || Object])
     ], SoundEffectProvider);
     return SoundEffectProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=sound-effect.js.map
