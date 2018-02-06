@@ -1,0 +1,29 @@
+$menk-egulen-font-path: $font-path !default;
+
+@font-face {
+  font-family: "Menk Egulen Tig";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Menk Egulen Tig"), local("MenkEgulenTig"), url("#{$menk-egulen-font-path}/MenkEgulenTig.woff") format("woff"), url("#{$menk-egulen-font-path}/MenkEgulenTig.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Menk Egulen Tig";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Menk Egulen Tig"), local("MenkEgulenTig"), url("#{$menk-egulen-font-path}/MenkEgulenTig.woff") format("woff"), url("#{$menk-egulen-font-path}/MenkEgulenTig.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Menk Egulen Tig";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Menk Egulen Tig Bold"), local("MenkEgulenTig"), url("#{$menk-egulen-font-path}/MenkEgulenTig.woff") format("woff"), url("#{$menk-egulen-font-path}/MenkEgulenTig.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Menk Egulen Tig";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Menk Egulen Tig Bold"), local("MenkEgulenTig"), url("#{$menk-egulen-font-path}/MenkEgulenTig.woff") format("woff"), url("#{$menk-egulen-font-path}/MenkEgulenTig.ttf") format("truetype");
+}
