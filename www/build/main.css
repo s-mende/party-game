@@ -25694,21 +25694,8 @@ ion-navbar.toolbar {
 }
 
 page-bingo {
-  /*
- * Globals
- */
   /* Links */
   /* Custom default button */
-  /*
-  * Base structure
-  */
-  /* Extra markup and styles for table-esque vertical and horizontal centering */
-  /*
-  * Cover
-  */
-  /*
-  * Affix and center
-  */
   /*
   * Party Bingo
   */
@@ -25737,6 +25724,16 @@ page-bingo .main {
   background-size: cover;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+page-bingo .mgl {
+  -moz-writing-mode: vertical-lr;
+  writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -o-writing-mode: vertical-lr;
+  -ms-writing-mode: tb-lr;
+  writing-mode: tb-lr;
+  -webkit-text-orientation: sideways-right;
 }
 
 @media (min-width: 768px) {
@@ -25800,9 +25797,6 @@ page-bingo #p-number-mgl {
   width: 15%;
   float: left;
   font-family: Mongolian ZS;
-  -webkit-writing-mode: vertical-lr;
-  -ms-writing-mode: tb-lr;
-  writing-mode: vertical-lr;
 }
 
 page-bingo #pingo-number-mgl {
@@ -25815,9 +25809,6 @@ page-bingo #buttons {
   width: 25%;
   padding-top: 15%;
   font-family: Menk Egulen Tig;
-  -webkit-writing-mode: vertical-lr;
-  -ms-writing-mode: tb-lr;
-  writing-mode: vertical-lr;
   float: right;
 }
 
@@ -25866,9 +25857,6 @@ page-bingo .history-title {
   width: 10%;
   float: left;
   font-family: Menk Egulen Tig;
-  -webkit-writing-mode: vertical-lr;
-  -ms-writing-mode: tb-lr;
-  writing-mode: vertical-lr;
   text-shadow: 12px 13px 25px #000;
   padding: 20px 40px;
 }
