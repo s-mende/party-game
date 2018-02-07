@@ -259,10 +259,11 @@ var BingoPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-bingo',template:/*ion-inline-start:"/Users/suchin/Documents/workspace/private_project/s-mende.party-game/src/pages/bingo/bingo.html"*/'<ion-content class="main">\n  <button ion-button menuToggle>\n    <ion-icon name="menu"></ion-icon>\n  </button>\n\n  <div id="main-area">\n    <p id="pingo-number">{{pingoNumber}}</p>\n    <p id="p-number-mgl">\n      <font face="Mongolian ZS">\n        <span id="pingo-number-mgl">{{pingoNumberMgl}}</span>\n      </font>\n    </p>\n    <div id="buttons">\n      <!-- <button id="start-button" class="btn btn-lg btn-default" ion-button (click)="startClicked();"> -->\n      <div id="start-button" class="my-button" (click)="startClicked();">\n        <ion-icon name="game-controller-b"></ion-icon> {{ startButton }} </div>\n      <!-- </button> -->\n      <!-- <button id="reset-button" class="btn btn-lg btn-default" ion-button (click)="resetClicked();">{{resetButton}}</button> -->\n      <div id="reset-button" class="my-button" (click)="resetClicked();">\n        <ion-icon name="trash" isActive="false"></ion-icon> {{ resetButton }} </div>\n    </div>\n  </div>\n  <div id="history-area">\n    <div class="history-title">\n      <h3>ᠭᠠᠷᠴᠤ ᠦᠩᠭᠡᠷᠡᠭᠰᠡᠨ ᠲᠤᠭ᠎ᠠ</h3>\n    </div>\n    <div id="histories" class="row histories">\n      <div class="col-md-1" *ngFor="let historiesDiv of historiesDivs">\n        <p class="history-number">{{ historiesDiv }}</p>\n      </div>\n    </div>\n  </div>\n\n  <!-- <audio id="drum" preload="auto">\n    <source src="asset/nc79078.mp3" type="audio/mp3">\n  </audio> -->\n\n  <!-- jQuery (necessary for Bootstrap\'s JavaScript plugins) -->\n  <!-- <script src="asset/jquery-1.11.3.min.js "></script> -->\n  <!-- Include all compiled plugins (below), or include individual files as needed -->\n  <!-- <script src="asset/bootstrap-3.3.5-dist/js/bootstrap.min.js "></script> -->\n  <!-- <script src="asset/partybingo.js "></script> -->\n\n</ion-content>\n'/*ion-inline-end:"/Users/suchin/Documents/workspace/private_project/s-mende.party-game/src/pages/bingo/bingo.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_sound_effect_sound_effect__["a" /* SoundEffectProvider */]])
     ], BingoPage);
     return BingoPage;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=bingo.js.map
@@ -364,10 +365,9 @@ var SoundEffectProvider = (function () {
     };
     SoundEffectProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */]])
     ], SoundEffectProvider);
     return SoundEffectProvider;
-    var _a;
 }());
 
 //# sourceMappingURL=sound-effect.js.map

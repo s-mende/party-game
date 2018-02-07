@@ -25679,6 +25679,20 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+@font-face {
+  font-family: "Menk Egulen Tig";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Menk Egulen Tig"), local("MenkEgulenTig"), url("../assets/fonts/MenkEgulenTig/MenkEgulenTig.woff") format("woff"), url("../assets/fonts/MenkEgulenTig/MenkEgulenTig.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Mongolian ZS";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Mongolian ZS"), local("MongolianZS"), url("../assets/fonts/MongolianZS/MongolianZS.woff") format("woff"), url("../assets/fonts/MongolianZS/MongolianZS.ttf") format("truetype");
+}
+
 page-bingo {
   /*
  * Globals
@@ -25719,7 +25733,7 @@ page-bingo .btn-default:focus {
 page-bingo .main {
   height: 100%;
   /*background-color: #333;*/
-  background-image: url("../assets/imgs/top-back2.jpg");
+  background-image: url("../assets/imgs/top-back.svg");
   background-size: cover;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
